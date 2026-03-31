@@ -4,6 +4,7 @@ import{useLocation, useNavigate} from "react-router-dom";
 const Search = () => {
   //  const location = useLocation();
   // const navigate = useNavigate();
+//   11111111111111111111111111111111111111
   return (
 
     <div className="search-container">
@@ -25,7 +26,6 @@ const Search = () => {
             <div className ="result-label">
               PAPRIKA FLAVOUR
             </div>
-
 
             
             {/* ผลลัพธ์  font ออกมา*/}
