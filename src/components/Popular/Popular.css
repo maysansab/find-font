@@ -1,0 +1,45 @@
+.popular-container{
+    background-color: #1a365d;
+    min-height: 100vh; /* ให้ความสูงเต็มหน้าจอ */
+    
+    /* บรรทัดข้างล่างนี้คือส่วนสำคัญที่ทำให้กล่องอยู่ตรงกลาง */
+    display: flex;
+    justify-content: center; /* จัดกลางแนวนอน */
+    align-items: center;     /* จัดกลางแนวตั้ง */
+    
+    padding: 20px; /* เพิ่ม padding เผื่อไว้ให้ไม่ติดขอบเวลาหน้าจอเล็ก */
+}
+.popular-card {
+    background-color: white;
+    margin-top:50px;
+    width: 100%;
+    max-width: 1238px;
+    
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.popular-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #666;
+}
+.result-label {
+    padding: 15px 20px;
+    background-color: #fcfcfc;
+    height: 2211px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}

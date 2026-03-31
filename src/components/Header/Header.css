@@ -1,0 +1,106 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #FFFFFF;
+    justify-content: flex-start;   /*txt ซ้ายสุด*/
+    min-width: 1200px;
+}
+
+.nav-logo{
+  cursor:pointer;
+}
+
+.logo{
+    width: 136px;
+    height:123px;
+    cursor: pointer;
+}
+
+
+
+.search-box{
+    position:relative;
+    width:353px;
+    height: 33.25px;
+    margin-left: 67.52px;
+}
+.search-input{
+    width:100%;
+    font-size: 20px;
+    padding: 8px 12px 8px 35px; /*เว้นให้ icon*/
+    border-radius: 6px;
+    border: 1px solid #0D3B66;
+}
+.search-icon{
+    position:absolute;
+    padding-top: 9px ;
+    left:10px;
+    top:50%;
+    transform: translateY(-50%);
+    width:16px;
+    height: 16px;
+}
+
+.menu{
+    display : flex;
+    gap: 20px;
+    align-items:center;
+    margin-left: auto;    /* menu ไปขวา*/
+}
+
+.login-btn{
+         /*   บน   ขวา  ล่าง  ซ้าย*/
+    padding:  14px 24px 14px 24px;
+    background: #1E3A5F;
+    font-size: 20px;
+    color: #CDDAFD;
+    gap: 8px;
+    width: 169px;
+    height: 52;
+    border:none;
+    border-radius: 8px;
+    cursor:pointer;
+}
+
+.popular-btn{
+  font-size: 20px;
+  font-weight: 500;  /*ความหนา*/
+  color: #1E3A5F;
+  cursor: pointer;
+  padding: 5px 10px; /* ให้ใกล้ 98x30 */
+ 
+    
+}
+
+.newfont-btn{
+  font-size: 20px;
+  font-weight: 500;
+  color: #1E3A5F;
+  cursor: pointer;
+  padding: 5px 10px; /* ให้ใกล้ 98x30 */
+  
+ 
+}
+
+
+
+.popular-btn,
+.newfont-btn {
+  transition: 0.3s;
+}
+
+.popular-btn:hover,
+.newfont-btn:hover {
+  color: #000;
+}
+
+.login-btn {
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #16304d;
+}
