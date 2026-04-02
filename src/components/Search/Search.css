@@ -1,6 +1,6 @@
 .search-container{
     background-color: #1a365d;
-    min-height: 100vh; /* ให้ความสูงเต็มหน้าจอ */
+    /* min-height: 100vh; ให้ความสูงเต็มหน้าจอ */
     
     /* บรรทัดข้างล่างนี้คือส่วนสำคัญที่ทำให้กล่องอยู่ตรงกลาง */
     display: flex;
@@ -80,6 +80,39 @@
 }
 
 .result-content{
-    padding: 0 30px 1000px;
+   display: flex;             /* จัดเรียงแนวนอน */
+  align-items: center;       /* จัดกึ่งกลางแนวตั้งให้รูปกับข้อความตรงกัน */
+  justify-content: center;   /* จัดทั้งกลุ่มให้อยู่กลางหน้าจอ */
+  gap: 40px;                 /* ระยะห่างระหว่างรูปกับข้อความ */
+  padding: 60px 20px;
+  width: 100%;
+  height: 350px;
+}
 
+.result-text-group {
+  display: flex;
+  flex-direction: column;    /* ให้ h1 กับ p เรียงต่อกันลงมาในแนวตั้ง */
+  text-align: left;          /* จัดตัวหนังสือชิดซ้าย */
+}
+
+.not-found-title {
+  color: #1a365d;            /* สีน้ำเงินเข้มตามแบบ */
+  font-size: 48px;         /* ขนาดตัวอักษรใหญ่ชัดเจน */
+  font-weight: bold;
+  margin: 0 0 10px 0;        /* ระยะห่างระหว่างหัวข้อกับคำอธิบาย */
+}
+
+.not-found-desc {
+  color: #4a5568;            /* สีเทาสำหรับคำอธิบาย */
+  font-size: 20px;
+  
+  margin: 0;
+}
+
+.robot-icon{
+             /* ขวา */
+    padding-top: 15px;
+    padding-left: 50px;
+    width:157px;
+    height: 157px;
 }

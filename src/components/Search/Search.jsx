@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import './Search.css';
 import{useLocation, useNavigate, useSearchParams} from "react-router-dom";
-
+import { robot } from '../../assets';
 
 const Search = () => {
   //  const location = useLocation();
@@ -65,6 +65,14 @@ const Search = () => {
             {/* 3. ส่วนแสดงผลลัพธ์ข้างล่าง (ถ้ามี) */}
             <div className="result-content" >
                 {/* ใส่รายการฟอนต์ตรงนี้ */}
+                 <img 
+                    src={robot} 
+                    alt="robot" 
+                    className="robot-icon" />
+                <div className ="result-text-group">
+                <h1 className="not-found-title">we don’t recognize that font.</h1>
+                <p className="not-found-desc"> Try a different search or check the spelling of your query</p>
+                </div>
             </div>
 
            

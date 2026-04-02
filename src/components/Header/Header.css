@@ -30,18 +30,19 @@
 .search-input{
     width:100%;
     font-size: 20px;
-    padding: 8px 12px 8px 35px; /*เว้นให้ icon*/
+    padding: 8px 12px 8px 10px; /*เว้นให้ icon*/
     border-radius: 6px;
     border: 1px solid #0D3B66;
 }
 .search-icon{
     position:absolute;
     padding-top: 9px ;
-    left:10px;
+    left:350px;
     top:50%;
     transform: translateY(-50%);
     width:16px;
     height: 16px;
+    cursor: pointer;
 }
 
 .menu{

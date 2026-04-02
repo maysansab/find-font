@@ -57,12 +57,13 @@ const Header = () => {
           //   if (location.pathname !== '/search') navigate('/search');
           // }}
           />
+          
           <img 
           src={search} 
           alt="search" 
           className="search-icon" 
           onClick={handleSearch} // ทำให้ไอคอนกดค้นหาได้
-          style={{ cursor: 'pointer' }}
+          
           />
         </div>
        
