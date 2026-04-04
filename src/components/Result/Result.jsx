@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useRef} from 'react'
 import "./Result.css";
 import { search, iconUpload } from '../../assets';
 import {useNavigate, useLocation} from "react-router-dom";
@@ -6,58 +6,55 @@ import {useNavigate, useLocation} from "react-router-dom";
 const Result = ({image: propsImage}) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const fileInputRef =useRef(null); //ใส่ null เป็นค่าเริ่มต้น
 
+  // 1. สร้าง State สำหรับเก็บ URL ของรูปภาพเพื่อให้ Component Re-render เมื่อมีการเปลี่ยนรูป
+  const [currentImage, setCurrentImage] = useState(null);
 
-  // เช็กว่ามีรูปส่งมาทาง state ไหม ถ้าไม่มีค่อยใช้จาก props
-  // const image = location.state?.image || propsImage;
+  //ตั้งค่าเริ่มต้นของรูปภาพ
+  useEffect(() => {
+    const fileFromState = location.state?.file;
+    if (fileFromState) {
+      //สร้าง URL จากไฟล์ที่ส่งมา
+      const objectUrl = URL.createObjectURL(fileFromState);
+      setCurrentImage(objectUrl);
+      // cleanup function เพื่อคืนค่า memory
+      return ()=> URL.revokeObjectURL(objectUrl);
+    } else {
+      setCurrentImage(location.state?.image || propsImage);
+    }
+  }, [location.state, propsImage]);
 
-  // if(!image){
-  //   return <p style={{color : "red"}}> no image </p>
-  // }
-  // const location = useLocation();
+  // 2. ฟังก์ชันเมื่อเลือกไฟล์ใหม่
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      // สร้าง URL สำหรับรูปใหม่และอัปเดต State
+      const newImageUrl = URL.createObjectURL(file);
+      setCurrentImage(newImageUrl);
+    }
+  };
 
-  // const file = location.state?.file;
-  // เช็กว่าสิ่งที่ส่งมาคือ File ไหม ถ้าใช่ให้สร้าง URL ชั่วคราว
+  
   const fileFromState = location.state?.file;
+
   const image = fileFromState 
     ? URL.createObjectURL(fileFromState) 
     : (location.state?.image || propsImage);
     
-
-  const handleClick = () =>{
-    // fileInputRef.current.click(); /*กด icon แล้วเปิด file */
-    navigate("identify");
-  };
-  // const imageUrl = file ? URL.createObjectURL(file) : null;
-  // crop ภาพ
-  const[cropped, setCropped] = useState(null);
-
-  useEffect(() => {
-    if (!image) return;
-
-    const img = new Image();
-    img.src = image;
-
-    img.onload =()=>{
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
-
-      //ปรับตำแหน่ง
-
-      const x =100;
-      const y = 100;
-      const w = 200;
-      const h = 60;
-
-      canvas.width = w;
-      canvas.height = h;
-
-      ctx.drawImage(img,x,y,w,h,0,0,w,h);
-      
-      setCropped(canvas.toDataURL());
-
+  
+  
+    const handleUpload = () =>{
+      if(fileInputRef.current){
+         fileInputRef.current.click(); /*กด icon แล้วเปิด file */
+      }
+      // else{
+      //   console.error("หาไฟล์ Input ไม่เจอ! ตรวจสอบว่าใส่ ref={fileInputRef} ใน <input> หรือยัง");
+      // }
+     
     };
-  },[image]);
+
+
   
   return (
     <div className="Result">
@@ -65,10 +62,10 @@ const Result = ({image: propsImage}) => {
       <p>Share an image and we'll find the best matching font.</p>
     
       <div className ="result-image">
-        {image ? (
-          <img src={image}    //เปลี่ยนเป็นรูปที่ upload จริงที่หลัง
-          alt = "result"
-          style={{width:'100%'}}/>
+        {/* ใช้ currentimage แทนimage */}
+        {currentImage ? (
+          <img src={currentImage}    //เปลี่ยนเป็นรูปที่ upload จริงที่หลัง
+          alt = "result"/>
         ) : (
           <p>no image</p>
         )}
@@ -79,26 +76,27 @@ const Result = ({image: propsImage}) => {
         </div>
       </div>
 
-      {/* ปุ่ม */}
-      {/* <div className ="result-actions" onClick={handleClick}>
-        <button className="identify-btn">
-          <img src ={search} alt="search" className="identify-btn-icon"/>
-          Identify font
-        </button>
-
-        <button className="upload-btn">
-          <img src={iconUpload} alt="upload" className="upload-btn-icon"/>
-          Upload new
-        </button>
-      </div> */}
+      
       <div className ="result-actions">
-        <button className="identify-btn" onClick={() => navigate("/identify")}>
+        {/* 1. ต้องมีบรรทัดนี้ และต้องมี ref={fileInputRef} เท่านั้น! */}
+          <input 
+            type="file" 
+            ref={fileInputRef} 
+            style={{ display: 'none' }} 
+            accept="image/*"
+            onChange={handleFileChange} 
+          />
+        <button className="identify-btn" onClick={() => navigate("/identify",{state:{image: currentImage}})}>
           <img src={search} alt="search" className="identify-btn-icon"/>
           Identify font
         </button>
 
-        <button className="upload-btn" onClick={() => navigate("/identify")}>
-          <img src={iconUpload} alt="upload" className="upload-btn-icon"/>
+        {/* เรียก handleUpload เมื่อกดปุ่มหรือไอคอน */}
+        <button className="upload-btn"onClick={handleUpload}>
+          <img src={iconUpload} 
+               alt="upload" 
+               className="upload-btn-icon"
+          />
           Upload new
         </button>
         </div>

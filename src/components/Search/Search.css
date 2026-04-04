@@ -96,14 +96,14 @@
 }
 
 .not-found-title {
-  color: #1a365d;            /* สีน้ำเงินเข้มตามแบบ */
+  color: #8EA3BF;            /* สีน้ำเงินเข้มตามแบบ */
   font-size: 48px;         /* ขนาดตัวอักษรใหญ่ชัดเจน */
   font-weight: bold;
   margin: 0 0 10px 0;        /* ระยะห่างระหว่างหัวข้อกับคำอธิบาย */
 }
 
 .not-found-desc {
-  color: #4a5568;            /* สีเทาสำหรับคำอธิบาย */
+  color: #8EA3BF;            /* สีเทาสำหรับคำอธิบาย */
   font-size: 20px;
   
   margin: 0;

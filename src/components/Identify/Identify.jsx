@@ -7,9 +7,18 @@ import{useLocation, useNavigate} from "react-router-dom";
 
 
 
-const Identify = ({setImage}) => {
+const Identify = () => {
     const location = useLocation();
     const navigate = useNavigate();
+
+    //ดึงรูปที่ส่งมาจากหน้า Result
+    const imageToBack = location.state?.image;
+
+    const handleBack = () =>{
+        //ส่งรูปกลับหน้า Result เพื่อใช้รูปหน้า Result ใช้รูปนี้แสดงผล
+        navigate("/result",{state:{image: imageToBack}});
+        
+    };
 
     // รับข้อมูลจากรูปภาพ state ที่ส่งมา
     // const uploadedImage = location.state.state?.image;
@@ -32,7 +41,7 @@ const Identify = ({setImage}) => {
                 <div className = "header-left">
                     <span>Result for</span>
                     <span className="file-name">PAPRIKA FLAVOUR</span>
-                    <button onClick={() => navigate(-1)} className="back-link">
+                    <button onClick={handleBack} className="back-link">
                         Back to image
                     </button>
                 </div>

@@ -1,7 +1,7 @@
 
 .header {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     padding: 15px 30px;
     background: #FFFFFF;
@@ -20,29 +20,36 @@
 }
 
 
-
 .search-box{
     position:relative;
     width:353px;
-    height: 33.25px;
     margin-left: 67.52px;
+    display: flex;
+    align-items:center;
 }
 .search-input{
     width:100%;
-    font-size: 20px;
+    font-size: 16px;
     padding: 8px 12px 8px 10px; /*เว้นให้ icon*/
     border-radius: 6px;
     border: 1px solid #0D3B66;
-}
+    box-sizing: border-box; /* สำคัญมาก: กัน input บวม */
+    
+    
+    cursor: pointer;
+  }
 .search-icon{
     position:absolute;
-    padding-top: 9px ;
-    left:350px;
+    padding:0px ;
+    /* left:350px; */
+    right:12px;
     top:50%;
     transform: translateY(-50%);
     width:16px;
     height: 16px;
     cursor: pointer;
+    pointer-events: auto;
+    z-index: 2;
 }
 
 .menu{
@@ -56,18 +63,18 @@
          /*   บน   ขวา  ล่าง  ซ้าย*/
     padding:  14px 24px 14px 24px;
     background: #1E3A5F;
-    font-size: 20px;
+    font-size: 16px;
     color: #CDDAFD;
-    gap: 8px;
-    width: 169px;
-    height: 52;
+    /* gap: 8px; */
+    width: 140px;
+    /* height: 52; */
     border:none;
     border-radius: 8px;
     cursor:pointer;
 }
 
 .popular-btn{
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;  /*ความหนา*/
   color: #1E3A5F;
   cursor: pointer;
@@ -77,7 +84,7 @@
 }
 
 .newfont-btn{
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   color: #1E3A5F;
   cursor: pointer;
