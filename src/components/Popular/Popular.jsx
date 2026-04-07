@@ -7,16 +7,22 @@ const Popular = () => {
             
             {/* header ส่วนหัว */}
             <div className="popular-header">
-                <div className = "header-left">
+                <div className = "font-preview">
                     <span>Popular</span>
-                    
-                   
                 </div>
             </div>
-            <div className ="result-label">
-              PAPRIKA FLAVOUR
+            <input
+                type="text"
+                className="popurlar-label-input"
+                // value={previewText}
+                placeholder="Type something..."
+                onChange={(e) => setPreviewText(e.target.value)}
+                spellCheck="false"
+            />
+            <div className="result-content" >
+                            {/* ใส่รายการฟอนต์ตรงนี้ */}
+            
             </div>
-
 
             
             {/* ผลลัพธ์  font ออกมา*/}

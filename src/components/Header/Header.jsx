@@ -1,20 +1,30 @@
 import React,{useState,useEffect} from 'react'
-import{ useNavigate,useLocation } from'react-router-dom';
+import{ useNavigate,useLocation, useSearchParams } from'react-router-dom';
 import "./Header.css";
 
 import { logo, search } from '../../assets';
 
 const Header = () => {
-  const[query, setQuery] = useState("");
+  
   const navigate = useNavigate();
   const location = useLocation();
+  const [searchParams] = useSearchParams(); // เพิ่มการดึง searchParams
+  
+  // ดึงค่า q จาก URL มาเป็นค่าเริ่มด้น เพื่อให้ reload แล้วค่าไม่หาย
+  const[query, setQuery] = useState(searchParams.get("q") || "");
 
-  //ฟังก์ชันล้างค่าเมื่อออกจากหน้า search
+
+  //เมื่อผู้ใช้กด back/forward) เมื่อ URL เปลี่ยน
   useEffect(()=>{
-    if (!location.pathname.startsWith('/search')){
-      setQuery("");
+    const q = searchParams.get("q");
+    if (q){
+      
+      setQuery(q);
+    }else if (!location.pathname.startsWith('/search')){
+      setQuery(""); //ถ้าไม่อยู่หน้า search ให้ล้างค่า
     }
-  },[location.pathname]);
+
+  },[searchParams,location.pathname]);
 
   const handleSearch = (e)=> {
     if (e) e.preventDefault(); //กันหน้าเว็บรีโหลด

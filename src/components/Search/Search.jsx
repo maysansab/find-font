@@ -8,33 +8,37 @@ const Search = () => {
   const navigate = useNavigate();
 //    const[query, setQuery] = useState("");
   const [searchParams] = useSearchParams();
-  
+  const q = searchParams.get("q") || ""; //ดึงค่าจาก URL
   // ดึงค่า 'q' จาก URL มาเตรียมไว้ก่อน
   const initialQ = searchParams.get("q");
 
 // สร้าง State สำหรับเก็บคำที่จะโชว์ใน "Searching for: ..."
   const [queryFromUrl, setQueryFromUrl] = useState(initialQ||"All Fonts");
   // State สำหรับช่องพิมพ์ทดสอบฟอนต์
-  const [previewText, setPreviewText] = useState(initialQ||"");
+  const [previewText, setPreviewText] = useState(q);
 
 // 2. ฟังก์ชันสำหรับล้างค่า (Reset) เมื่อโหลดหน้า หรือ Refresh
   useEffect(()=>{
     // ดึงค่า 'q' จาก URL ทุกครั้งที่ searchParams มีการเปลี่ยนแปลง
-    // const currentQuery = searchParams.get("q");
-    const q = searchParams.get("q");
+    const currentQuery = searchParams.get("q");
+    // const q = searchParams.get("q");
     
     
-    if (q) {
-      setQueryFromUrl(q); // อัปเดต "Searching for: bbbbb"
-      setPreviewText(q);  // (Option) ถ้าอยากให้ช่องพิมพ์ข้างล่างเปลี่ยนตามคำค้นหาด้วย
+    if (currentQuery) {
+      setQueryFromUrl(currentQuery); // อัปเดต "Searching for: bbbbb"
+      setPreviewText(currentQuery);  // (Option) ถ้าอยากให้ช่องพิมพ์ข้างล่างเปลี่ยนตามคำค้นหาด้วย
       
       // replace: true เพื่อไม่ให้ Browser เก็บประวัติการล้างนี้ไว้ (กด Back จะได้กลับไปหน้าก่อนหน้าได้จริง)
-      navigate('/search', { replace: true });
+      // navigate('/search', { replace: true });
       
-    } 
+    } else{
+      setQueryFromUrl("All Fonts");
+      setPreviewText("");
+    }
 
-    }, [searchParams,navigate]);
-    // 2. ถ้ามีค่าค้นหาจากหน้าแรก ให้เอามาตั้งเป็นค่าเริ่มต้นในช่องพิมพ์
+
+    }, [searchParams]);
+    
    
 
   return (

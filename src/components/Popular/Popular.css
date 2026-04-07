@@ -1,6 +1,6 @@
 .popular-container{
-    background-color: #1a365d;
-    min-height: 100vh; /* ให้ความสูงเต็มหน้าจอ */
+     background-color: #1a365d;
+    /* min-height: 100vh; ให้ความสูงเต็มหน้าจอ */
     
     /* บรรทัดข้างล่างนี้คือส่วนสำคัญที่ทำให้กล่องอยู่ตรงกลาง */
     display: flex;
@@ -27,7 +27,57 @@
     padding: 15px 20px;
     border-bottom: 1px solid #eee;
 }
+.font-preview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #666;
+}
+.popurlar-label-input {
 
+    /* 1. ลบ Border และ Background ทั้งหมด */
+  border: none !important;
+  background: transparent !important;
+
+  /* 2. ลบเส้นสีน้ำเงิน (Outline) เวลาคลิก */
+  outline: none !important;
+
+  /* 3. จัดการเรื่อง Font และขนาด (ต้องเหมือนข้อความปกติ) */
+  font-family: inherit; /* ใช้ Font เดียวกับ Container */
+  font-size: inherit;   /* ใช้ขนาดเดียวกับ Container */
+  font-weight: 700;     /* ปรับให้หนาตามรูป PAPRIKA */
+  color: #333;          /* สีข้อความ */
+  
+  /* 4. ปรับขนาดและตำแหน่ง */
+  width: 100%;          /* เต็มความกว้าง */
+  margin: 0;
+  padding: 8px 8px 8px 20px;          /* เอา Padding เริ่มต้นของ Input ออก */
+  height: auto;
+  line-height: normal; /* ช่วยจัดให้อยู่กึ่งกลางแนวตั้ง */
+
+  /* 5. เอากรณีคลิกที่ช่อง (Focus) ออก */
+  box-shadow: none !important;
+}
+.popurlar-label-input:hover{
+    background-color: rgba(0, 0, 0, 0.02) !important; /* ขึ้นสีเทาจางๆ ให้รู้ว่าแก้ได้ */
+    cursor: text;
+}
+
+/* ลบเงาหรือการตกแต่งของ browser บางตัว */
+.popurlar-label-input::placeholder {
+  color: #ccc;
+  font-weight: normal;
+}
+.popular-content{
+   display: flex;             /* จัดเรียงแนวนอน */
+  align-items: center;       /* จัดกึ่งกลางแนวตั้งให้รูปกับข้อความตรงกัน */
+  justify-content: center;   /* จัดทั้งกลุ่มให้อยู่กลางหน้าจอ */
+  gap: 40px;                 /* ระยะห่างระหว่างรูปกับข้อความ */
+  padding: 60px 20px;
+  width: 100%;
+  height: 350px;
+}
 .header-left {
     display: flex;
     align-items: center;
