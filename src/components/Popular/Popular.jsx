@@ -16,10 +16,10 @@ const Popular = () => {
                 className="popurlar-label-input"
                 // value={previewText}
                 placeholder="Type something..."
-                onChange={(e) => setPreviewText(e.target.value)}
-                spellCheck="false"
+                // onChange={(e) => setPreviewText(e.target.value)}
+                // spellCheck="false"
             />
-            <div className="result-content" >
+            <div className="popular-content" >
                             {/* ใส่รายการฟอนต์ตรงนี้ */}
             
             </div>
