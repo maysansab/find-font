@@ -14,16 +14,29 @@ const Result = ({image: propsImage}) => {
   //ตั้งค่าเริ่มต้นของรูปภาพ
   useEffect(() => {
     const fileFromState = location.state?.file;
+    const imageFromState = location.state?.image;
+    //เช็คว่า เมื่อเกืดการรีโหลดจะเด้งไปที่หน้า detail
+    if(!fileFromState && !imageFromState && !currentImage){
+      //ตรวจสอบว่าถ้ามีมีข้อมูลจากหน้าก่อน และไม่ได้มาจาก propimage ให้เด้งกลับ
+      if(!propsImage){
+        navigate("/");
+        return;
+      }
+    }
+    let objectUrl = null;
+    
     if (fileFromState) {
       //สร้าง URL จากไฟล์ที่ส่งมา
-      const objectUrl = URL.createObjectURL(fileFromState);
+      objectUrl = URL.createObjectURL(fileFromState);
       setCurrentImage(objectUrl);
       // cleanup function เพื่อคืนค่า memory
       return ()=> URL.revokeObjectURL(objectUrl);
     } else {
-      setCurrentImage(location.state?.image || propsImage);
+      setCurrentImage(imageFromState || propsImage);
+    
+      // setCurrentImage(location.state?.image || propsImage);
     }
-  }, [location.state, propsImage]);
+  }, [location.state, propsImage,navigate]);
 
   // 2. ฟังก์ชันเมื่อเลือกไฟล์ใหม่
   const handleFileChange = (event) => {
@@ -32,6 +45,9 @@ const Result = ({image: propsImage}) => {
       // สร้าง URL สำหรับรูปใหม่และอัปเดต State
       const newImageUrl = URL.createObjectURL(file);
       setCurrentImage(newImageUrl);
+
+      //ล้าง state เก่า ใน history เพื่อให้ reload แล้วเด้งจริง
+      window.history.replaceState({}, document.title);
     }
   };
 
