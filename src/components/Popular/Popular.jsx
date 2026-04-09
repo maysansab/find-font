@@ -28,7 +28,7 @@ const Popular = () => {
                     className="box-icon" />
                 <div className ="popular-text-group">
                 <h1 className="not-found-title">No trending fonts found</h1>
-                <p className="not-found-desc">It looks like there’s no data available at the moment. </p>
+                <p className="not-found-desc">It looks like there’s no data available at the moment.</p>
                 <p className="not-found-desc">Check back soon to see the most popular fonts.</p>
                 </div>
             </div>
