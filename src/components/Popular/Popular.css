@@ -78,6 +78,33 @@
   width: 100%;
   height: 350px;
 }
+.popular-text-group {
+  display: flex;
+  flex-direction: column;    /* ให้ h1 กับ p เรียงต่อกันลงมาในแนวตั้ง */
+  text-align: left;          /* จัดตัวหนังสือชิดซ้าย */
+}
+
+.not-found-title {
+  color: #8EA3BF;            /* สีน้ำเงินเข้มตามแบบ */
+  font-size: 48px;         /* ขนาดตัวอักษรใหญ่ชัดเจน */
+  font-weight: bold;
+  margin: 0 0 10px 0;        /* ระยะห่างระหว่างหัวข้อกับคำอธิบาย */
+}
+
+.not-found-desc {
+  color: #8EA3BF;            /* สีเทาสำหรับคำอธิบาย */
+  font-size: 20px;
+  
+  margin: 0;
+}
+
+.box-icon{
+             /* ขวา */
+    padding-top: 15px;
+    padding-left: 50px;
+    width:157px;
+    height: 157px;
+}
 /* .header-left {
     display: flex;
     align-items: center;

@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Newfont.css";
+import { comming } from '../../assets';
 const Newfont = () => {
   return (
     <div className="newfont-container">
@@ -24,10 +25,15 @@ const Newfont = () => {
             <div className="newfont-content" >
                             {/* ใส่รายการฟอนต์ตรงนี้ */}
 
-
-
-
-            
+                <img 
+                    src={comming} 
+                    alt="comming" 
+                    className="comming-icon" />
+                <div className ="comming-text-group">
+                <h1 className="not-found-title">Fresh fonts are on the way!</h1>
+                <p className="not-found-desc">We're currently hand-picking the latest font designs for you.</p>
+                <p className="not-found-desc">Hang tight and check back soon!</p>
+                </div>
             </div>
 
             
