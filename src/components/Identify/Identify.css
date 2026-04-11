@@ -102,3 +102,69 @@
 .download-btn:hover {
     background-color: #1a365d;
 }
+.identify-label-input {
+
+    /* 1. ลบ Border และ Background ทั้งหมด */
+  border: none !important;
+  background: transparent !important;
+
+  /* 2. ลบเส้นสีน้ำเงิน (Outline) เวลาคลิก */
+  outline: none !important;
+
+  /* 3. จัดการเรื่อง Font และขนาด (ต้องเหมือนข้อความปกติ) */
+  font-family: inherit; /* ใช้ Font เดียวกับ Container */
+  font-size: inherit;   /* ใช้ขนาดเดียวกับ Container */
+  font-weight: 700;     /* ปรับให้หนาตามรูป PAPRIKA */
+  color: #333;          /* สีข้อความ */
+  
+  /* 4. ปรับขนาดและตำแหน่ง */
+  width: 100%;          /* เต็มความกว้าง */
+  margin: 0;
+  padding: 8px 8px 8px 20px;          /* เอา Padding เริ่มต้นของ Input ออก */
+  height: auto;
+  line-height: normal; /* ช่วยจัดให้อยู่กึ่งกลางแนวตั้ง */
+
+  /* 5. เอากรณีคลิกที่ช่อง (Focus) ออก */
+  box-shadow: none !important;
+}
+.identify-label-input:hover{
+    background-color: rgba(0, 0, 0, 0.02) !important; /* ขึ้นสีเทาจางๆ ให้รู้ว่าแก้ได้ */
+    cursor: text;
+}
+
+/* ลบเงาหรือการตกแต่งของ browser บางตัว */
+.identify-label-input::placeholder {
+  color: #ccc;
+  font-weight: normal;
+}
+
+.identify-content{
+  display: flex;             /* จัดเรียงแนวนอน */
+  align-items: center;       /* จัดกึ่งกลางแนวตั้งให้รูปกับข้อความตรงกัน */
+  justify-content: center;   /* จัดทั้งกลุ่มให้อยู่กลางหน้าจอ */
+  gap: 20px;                 /* ระยะห่างระหว่างรูปกับข้อความ */
+  padding: 60px 20px;
+  width: 100%;
+  height: 500px;
+}
+/* ------------------------ */
+/* จัดการพื้นที่แสดงรูป Thumbnail */
+.file-image-wrapper {
+    position: relative;
+    width: 120px; /* ปรับขนาดความกว้างตามต้องการ */
+    height: 40px; /* ปรับขนาดความสูงตามต้องการ */
+    overflow: hidden;
+    margin: 0 10px; /* เว้นระยะห่างจากตัวหนังสือ */
+    border-radius: 4px; /* มุมโค้งเล็กน้อย */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ทำให้รูปภาพ Thumbnail อยู่กลางและขนาดพอดี */
+.uploaded-thumbnail {
+    width: 110%;
+    height: 110%;
+    object-fit: contain; /* ทำให้เห็นทั้งรูปโดยไม่ตัดส่วนใดออก */
+}
+

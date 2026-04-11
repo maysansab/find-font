@@ -7,7 +7,7 @@ const Result = ({image: propsImage}) => {
   const location = useLocation();
   const navigate = useNavigate();
   const fileInputRef =useRef(null); //ใส่ null เป็นค่าเริ่มต้น
-
+  
   // 1. สร้าง State สำหรับเก็บ URL ของรูปภาพเพื่อให้ Component Re-render เมื่อมีการเปลี่ยนรูป
   const [currentImage, setCurrentImage] = useState(null);
 
@@ -16,13 +16,15 @@ const Result = ({image: propsImage}) => {
     const fileFromState = location.state?.file;
     const imageFromState = location.state?.image;
     //เช็คว่า เมื่อเกืดการรีโหลดจะเด้งไปที่หน้า detail
-    if(!fileFromState && !imageFromState && !currentImage){
+    const hasImage = sessionStorage.getItem("hasImage");
+   
       //ตรวจสอบว่าถ้ามีมีข้อมูลจากหน้าก่อน และไม่ได้มาจาก propimage ให้เด้งกลับ
-      if(!propsImage){
+      if(!hasImage){
         navigate("/");
         return;
       }
-    }
+       sessionStorage.removeItem("hasImage");
+  
     let objectUrl = null;
     
     if (fileFromState) {

@@ -34,6 +34,7 @@ const Detail = ({ setImage }) => {
 
           /*จำลอง AI */
           setTimeout(()=>{
+            sessionStorage.setItem("hasImage", "true");
             navigate("/result",{ state:{ image:imageData }});/*ไปหน้าใหม่ */
           }, 2000);
 
