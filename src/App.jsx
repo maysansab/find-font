@@ -14,8 +14,8 @@ const App = () => {
     
       {/* <Route path = "/" element={<Header />}/> */}
       <Route path = "/" element={<Detail setImage={setImage} />}/>
-      <Route path = "/result" element={<Result image={image} />}/>
-      <Route path = "/identify" element={<Identify setImage={setImage}/>}/>
+      <Route path = "/Result" element={<Result image={image} />}/>
+      <Route path = "/Identify" element={<Identify setImage={setImage}/>}/>
       <Route path = "/Newfont" element={<Newfont/>}/>
       <Route path = "/Popular" element={<Popular/>}/>
       <Route path = "/Search" element={<Search/>}/>
