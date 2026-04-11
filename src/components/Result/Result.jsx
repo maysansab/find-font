@@ -17,14 +17,14 @@ const Result = ({image: propsImage}) => {
     const imageFromState = location.state?.image;
     //เช็คว่า เมื่อเกืดการรีโหลดจะเด้งไปที่หน้า detail
     const hasImage = sessionStorage.getItem("hasImage");
-    // if(!fileFromState && !imageFromState && !propsImage){
+   
       //ตรวจสอบว่าถ้ามีมีข้อมูลจากหน้าก่อน และไม่ได้มาจาก propimage ให้เด้งกลับ
       if(!hasImage){
         navigate("/");
         return;
       }
        sessionStorage.removeItem("hasImage");
-    // }
+  
     let objectUrl = null;
     
     if (fileFromState) {
