@@ -43,7 +43,8 @@
     border: none;
     outline: none;
     width: 540px;
-    height: 25px;
+    /* height: 25px; */
+    height: 100px;
     cursor:pointer;
 }
 .upload-icon{
