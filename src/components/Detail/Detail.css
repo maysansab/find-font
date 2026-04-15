@@ -30,7 +30,7 @@
 .upload-box{
     position:relative;
     width:350px;
-    cursor:pointer;
+    /* cursor:pointer; */
 }
 
 .upload-input{
