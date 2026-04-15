@@ -50,9 +50,9 @@ const Detail = ({ setImage }) => {
     handleFile(file);
   };
 
-  // const handleDragOver =(e)=>{
-  //   e.preventDefault();
-  // };
+  const handleDragOver =(e)=>{
+    e.preventDefault();
+  };
   return (
     <div className="Detail">
       <h1>Find Font</h1>
